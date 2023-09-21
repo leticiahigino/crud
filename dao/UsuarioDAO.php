@@ -20,16 +20,16 @@ class UsuarioDAO{
     }
     public function read(){
         try{
-            $sql = "SELECT * FROM usuario order by nome asc"
-            $result = Conexao::getConexao()->querry($sql);
-            $result = $result->fetchAll(PDO::FETCH_ASSOC);
+            $sql = "SELECT * FROM usuario order by nome asc";
+            $result = Conexao::getConexao()->query($sql);
+            $lista = $result->fetchAll(PDO::FETCH_ASSOC);
             $f_lista = array();
             foreach($lista as $l){
-                $f_lista[] = $this->listaUsuario($l);
+                $f_lista[] = $this->listaUsuarios($l);
             }
             return $f_lista;
         }catch(Exception $e){
-            print "Errro ao inserir o usuario <br>".$e.'<br>';
+            print "Erro ao inserir o usuario <br>".$e.'<br>';
     }
 }
 public function update(Usuario $usuario){
